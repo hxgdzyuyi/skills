@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "schema": "claude-plugin/v1",
+  "skills_dir": "skills",
+  "skill_entry": "SKILL.md",
+  "install": {
+    "method": "copy",
+    "target": ".claude/skills"
+  },
+  "registry": {
+    "type": "github",
+    "repo": "hxgdzyuyi/skills",
+    "branch": "main"
+  }
+}

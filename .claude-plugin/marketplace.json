@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "name": "hxgdzyuyi/skills",
+  "description": "hxgdzyuyi 的 Claude Code 技能合集",
+  "author": "hxgdzyuyi",
+  "homepage": "https://github.com/hxgdzyuyi/skills",
+  "plugins": [
+    {
+      "name": "nova-github-repo-mentionable-users",
+      "description": "按地区筛选 GitHub 仓库的可提及用户（贡献者）。批量获取仓库贡献者并按国家/地区进行筛选识别，输出为 CSV 文件。",
+      "path": "skills/nova-github-repo-mentionable-users",
+      "version": "1.0.0",
+      "tags": ["github", "contributors", "geo-filter"]
+    }
+  ]
+}
