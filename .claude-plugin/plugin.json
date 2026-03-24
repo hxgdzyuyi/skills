@@ -1,15 +1,18 @@
 {
-  "version": "1.0",
-  "schema": "claude-plugin/v1",
-  "skills_dir": "skills",
-  "skill_entry": "SKILL.md",
-  "install": {
-    "method": "copy",
-    "target": ".claude/skills"
+  "name": "hxgdzyuyi-skills",
+  "description": "Agent Skills for GitHub data analysis including contributor filtering by region and batch processing of repository mentionable users",
+  "version": "1.0.0",
+  "author": {
+    "name": "hxgdzyuyi"
   },
-  "registry": {
-    "type": "github",
-    "repo": "hxgdzyuyi/skills",
-    "branch": "main"
-  }
+  "homepage": "https://github.com/hxgdzyuyi/skills",
+  "repository": "https://github.com/hxgdzyuyi/skills",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "contributors",
+    "mentionable-users",
+    "region-filter",
+    "data-analysis"
+  ]
 }
