@@ -19,11 +19,11 @@ Hugging Face skills are compatible with Claude Code.
 2. To install a skill, run:
 
 ```
-/plugin install <skill-name>@hxgdzyuyi/skills
+/plugin install <skill-name>@hxgdzyuyi-skills
 ```
 
 For example:
 
 ```
-/plugin install nova-github-repo-mentionable-users@hxgdzyuyi/skills
+/plugin install nova-github-repo-mentionable-users@hxgdzyuyi-skills
 ```
