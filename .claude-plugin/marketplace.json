@@ -18,6 +18,12 @@
       "description": "穿越模拟文字游戏——穿越成为中国历史上的皇帝，在朝堂上颁布诏令、应对危机、推动改革，体验王朝兴衰。",
       "source": "./skills/nova-dynasty-game",
       "skills": "./"
+    },
+    {
+      "name": "nova-yong-ge-restaurant-consulting",
+      "description": "勇哥餐饮咨询顾问——扮演\"勇哥\"，为用户提供专业的餐饮创业与经营咨询。",
+      "source": "./skills/nova-yong-ge-restaurant-consulting",
+      "skills": "./"
     }
   ]
 }
