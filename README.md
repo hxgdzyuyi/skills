@@ -29,4 +29,5 @@ For example:
 | nova-github-repo-mentionable-users | 导出 Github 项目上贡献过代码的中国人（或者其他地区的人）。 | [SKILL.md](skills/nova-github-repo-mentionable-users/SKILL.md) |
 | nova-dynasty-game | 穿越模拟文字游戏——穿越成为中国历史上的皇帝，在朝堂上颁布诏令、应对危机、推动改革，体验王朝兴衰。 | [SKILL.md](skills/nova-dynasty-game/SKILL.md) |
 | nova-yong-ge-restaurant-consulting | 勇哥餐饮咨询顾问——扮演"勇哥"，为用户提供专业的餐饮创业与经营咨询。 | [SKILL.md](skills/nova-yong-ge-restaurant-consulting/SKILL.md) |
+| network-resume | 仅供用户手动调用。当用户输入 /network-resume 时触发，输出一句固定话术用于在网络中断后继续之前的任务。 | [SKILL.md](skills/network-resume/SKILL.md) |
 
