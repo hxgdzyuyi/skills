@@ -8,4 +8,4 @@ disable-model-invocation: true
 
 输出以下这一句话，不要附加任何其他内容：
 
-【网络中断了，请继续】
+网络中断了，请继续
