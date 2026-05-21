@@ -33,4 +33,5 @@ For example:
 | refactor-hotspots | 分析 Git 仓库最近频繁被修改的"热点文件"并给出重构建议（DRY、SRP、耦合等视角）。手动调用触发（/refactor-hotspots） | [SKILL.md](skills/refactor-hotspots/SKILL.md) |
 | render-plan | 润色和完善 docs/plans/ 下的计划文档，按标准层面结构整理内容。手动调用触发（/render-plan） | [SKILL.md](skills/render-plan/SKILL.md) |
 | run-plan | 落地 docs/plans/ 下的计划文档到当前项目。传入计划文件路径作为参数即开始执行；不传参数则列出所有可用计划供用户选择，手动触发。 | [SKILL.md](skills/run-plan/SKILL.md) |
+| wechat-rich-text | 把文章/草稿/主题整理成微信公众号编辑器可直接粘贴的兼容富文本（全内联样式 HTML）。可手动调用（/wechat-rich-text）。 | [SKILL.md](skills/wechat-rich-text/SKILL.md) |
 
