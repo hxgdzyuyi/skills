@@ -1,0 +1,20 @@
+{
+  "name": "hxgdzyuyi-local",
+  "interface": {
+    "displayName": "hxgdzyuyi Local"
+  },
+  "plugins": [
+    {
+      "name": "article-card-carousel",
+      "source": {
+        "source": "local",
+        "path": "./plugins/article-card-carousel"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

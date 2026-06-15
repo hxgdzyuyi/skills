@@ -1,0 +1,35 @@
+{
+  "name": "article-card-carousel",
+  "version": "0.1.0",
+  "description": "用 LLM 引导从笔记、草稿和参考风格生成有序文章轮播卡片 SVG/PNG，覆盖内容整理、模板设计、预览检查和最终渲染。",
+  "author": {
+    "name": "hxgdzyuyi"
+  },
+  "license": "MIT",
+  "keywords": [
+    "article",
+    "carousel",
+    "cards",
+    "svg",
+    "png"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "文章轮播卡片",
+    "shortDescription": "把文章笔记变成有序图文卡片。",
+    "longDescription": "文章轮播卡片为 Codex 提供一套通用的 LLM 驱动工作流，用于把文章、草稿、阅读笔记或参考素材整理成可发布的多页卡片。它会引导模型完成封面/结尾卡片处理、二级标题 SVG、三级内容 SVG、可复用模板、rsvg-convert 预览、禁则和遮盖检查，以及最终 PNG 渲染。该插件不绑定特定品牌，可根据用户给出的参考图、平台和内容主题自适应视觉风格。",
+    "developerName": "hxgdzyuyi",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "defaultPrompt": [
+      "根据我的笔记生成文章轮播卡片。",
+      "把这篇文章拆成多张 SVG 卡片。",
+      "参考这些图片生成通用卡片模板。"
+    ]
+  }
+}

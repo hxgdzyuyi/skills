@@ -1,6 +1,6 @@
 ## Installation
 
-Hugging Face skills are compatible with Claude Code.
+This repository contains skills for Claude Code and plugins for Codex.
 
 ### Claude Code
 
@@ -22,6 +22,20 @@ For example:
 /plugin install nova-github-repo-mentionable-users@hxgdzyuyi-skills
 ```
 
+### Codex
+
+Codex plugins are exposed through the local marketplace descriptor:
+
+```
+.agents/plugins/marketplace.json
+```
+
+The marketplace currently provides the `article-card-carousel` plugin from:
+
+```
+plugins/article-card-carousel
+```
+
 ## Skills
 
 | Name | Description | Documentation |
@@ -35,3 +49,8 @@ For example:
 | run-plan | 落地 docs/plans/ 下的计划文档到当前项目。传入计划文件路径作为参数即开始执行；不传参数则列出所有可用计划供用户选择，手动触发。 | [SKILL.md](skills/run-plan/SKILL.md) |
 | wechat-rich-text | 把文章/草稿/主题整理成微信公众号编辑器可直接粘贴的兼容富文本（全内联样式 HTML）。可手动调用（/wechat-rich-text）。 | [SKILL.md](skills/wechat-rich-text/SKILL.md) |
 
+## Codex Plugins
+
+| Name | Display Name | Description | Documentation |
+|------|--------------|-------------|---------------|
+| article-card-carousel | 文章轮播卡片 | 用 LLM 引导从笔记、草稿和参考风格生成有序文章轮播卡片 SVG/PNG，覆盖内容整理、模板设计、预览检查和最终渲染。 | [SKILL.md](plugins/article-card-carousel/skills/article-card-carousel/SKILL.md) |
