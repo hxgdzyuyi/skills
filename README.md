@@ -1,8 +1,40 @@
-## Installation
+# hxgdzyuyi Skills
+
+## 1. Codex 文章轮播卡片
+
+`article-card-carousel` 是给 Codex 使用的文章轮播卡片插件。它可以把文章、笔记、草稿或参考素材整理成有序图文卡片，并引导 Codex 完成 SVG 模板、预览检查和最终 PNG 渲染。
+
+![文章轮播卡片演示](docs/article-card-carousel/assets/fuzhou-weekly-arts-collage-white.webp)
+
+### 安装
+
+本仓库已经提供 Codex 本地插件市场描述文件：
+
+```
+.agents/plugins/marketplace.json
+```
+
+在 Codex 中添加或启用这个 marketplace 后，安装 `article-card-carousel` 插件。插件源码位于：
+
+```
+plugins/article-card-carousel
+```
+
+安装后，可以直接让 Codex 使用 `文章轮播卡片` / `article-card-carousel`，例如：
+
+```
+根据我的笔记生成文章轮播卡片。
+把这篇文章拆成多张 SVG 卡片。
+参考这些图片生成通用卡片模板。
+```
+
+## 2. Repository Introduction
 
 This repository contains skills for Claude Code and plugins for Codex.
 
-### Claude Code
+### Installation
+
+#### Claude Code
 
 1. Register the repository as a plugin marketplace:
 
@@ -22,7 +54,7 @@ For example:
 /plugin install nova-github-repo-mentionable-users@hxgdzyuyi-skills
 ```
 
-### Codex
+#### Codex
 
 Codex plugins are exposed through the local marketplace descriptor:
 
@@ -36,7 +68,7 @@ The marketplace currently provides the `article-card-carousel` plugin from:
 plugins/article-card-carousel
 ```
 
-## Skills
+### Skills
 
 | Name | Description | Documentation |
 |------|-------------|---------------|
@@ -49,7 +81,7 @@ plugins/article-card-carousel
 | run-plan | 落地 docs/plans/ 下的计划文档到当前项目。传入计划文件路径作为参数即开始执行；不传参数则列出所有可用计划供用户选择，手动触发。 | [SKILL.md](skills/run-plan/SKILL.md) |
 | wechat-rich-text | 把文章/草稿/主题整理成微信公众号编辑器可直接粘贴的兼容富文本（全内联样式 HTML）。可手动调用（/wechat-rich-text）。 | [SKILL.md](skills/wechat-rich-text/SKILL.md) |
 
-## Codex Plugins
+### Codex Plugins
 
 | Name | Display Name | Description | Documentation |
 |------|--------------|-------------|---------------|
