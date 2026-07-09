@@ -1,0 +1,12 @@
+interface:
+  display_name: "VACS Prod Plugin"
+  short_description: "Use the VACS MCP tools"
+  default_prompt: "Use $vacs-prod-plugin to inspect the current VACS project via MCP."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "vacs-prod-plugin"
+      description: "VACS project-scoped MCP server"
+      transport: "streamable_http"
+      url: "https://vacs.jgcat.net/mcp"

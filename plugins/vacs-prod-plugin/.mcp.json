@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "vacs-prod-plugin": {
+      "type": "http",
+      "url": "https://vacs.jgcat.net/mcp",
+      "oauth_resource": "https://vacs.jgcat.net/",
+      "oauth": {
+        "client_id": "codex-vacs-prod-plugin"
+      }
+    }
+  }
+}

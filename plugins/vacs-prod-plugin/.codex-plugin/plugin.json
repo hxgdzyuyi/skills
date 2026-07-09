@@ -1,0 +1,22 @@
+{
+  "name": "vacs-prod-plugin",
+  "version": "0.1.0",
+  "description": "Connect Codex to the VACS MCP server.",
+  "author": {
+    "name": "Qingyang"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "VACS Prod Plugin",
+    "shortDescription": "Use the VACS project MCP.",
+    "longDescription": "Connects Codex to the VACS MCP endpoint at https://vacs.jgcat.net/mcp and includes a skill for the request_api and read_api_doc tools.",
+    "developerName": "Qingyang",
+    "category": "Productivity",
+    "capabilities": ["MCP", "OAuth", "Project API"],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "defaultPrompt": "Use VACS Prod Plugin to inspect the current project overview."
+  },
+  "mcpServers": "./.mcp.json"
+}
