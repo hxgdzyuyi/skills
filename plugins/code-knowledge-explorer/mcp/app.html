@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>代码知识探索测验</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7faf9;
+      --panel: #ffffff;
+      --panel-soft: #eef7f4;
+      --text: #14211f;
+      --muted: #5d6f6a;
+      --border: #cddbd7;
+      --accent: #0f766e;
+      --accent-dark: #0b5f59;
+      --danger: #b42318;
+      --success: #12703b;
+      --warning: #936316;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111715;
+        --panel: #18221f;
+        --panel-soft: #1e302b;
+        --text: #edf7f4;
+        --muted: #a9bbb6;
+        --border: #31433e;
+        --accent: #2dd4bf;
+        --accent-dark: #5eead4;
+        --danger: #ffb4ab;
+        --success: #8ee0ad;
+        --warning: #f6d28b;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .status {
+      color: var(--muted);
+      padding: 24px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .section {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .item {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .path {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent-dark);
+      overflow-wrap: anywhere;
+    }
+
+    .question {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .question-title {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--panel-soft);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    label.option {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 8px;
+      align-items: start;
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    label.option:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--panel-soft);
+    }
+
+    input[type="radio"] {
+      margin: 3px 0 0;
+      accent-color: var(--accent);
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      position: sticky;
+      bottom: 0;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      border-top: 1px solid var(--border);
+      padding: 12px 0 0;
+      margin-top: 10px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      border-radius: 8px;
+      min-height: 38px;
+      padding: 8px 14px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .error {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .score {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .score strong {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .result.correct {
+      border-left: 4px solid var(--success);
+    }
+
+    .result.incorrect {
+      border-left: 4px solid var(--danger);
+    }
+
+    .result .verdict {
+      font-weight: 700;
+    }
+
+    .correct-text {
+      color: var(--success);
+    }
+
+    .incorrect-text {
+      color: var(--danger);
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding: 14px;
+      }
+
+      header {
+        display: block;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="app">
+    <p class="status">等待 Codex 生成代码探索测验。</p>
+  </main>
+
+  <script>
+    const PROTOCOL_VERSION = "2026-01-26";
+    const SESSION_STORAGE_KEY = "code-knowledge-explorer:last-session-id";
+    let nextMessageId = 1;
+    const pending = new Map();
+    let currentQuiz = null;
+    let submitting = false;
+    let restoringSessionId = null;
+
+    window.addEventListener("message", (event) => {
+      const message = event.data;
+      if (!message || message.jsonrpc !== "2.0") return;
+      if (Object.prototype.hasOwnProperty.call(message, "id") && (message.result || message.error)) {
+        const entry = pending.get(message.id);
+        if (!entry) return;
+        pending.delete(message.id);
+        if (message.error) entry.reject(new Error(message.error.message || "MCP 请求失败。"));
+        else entry.resolve(message.result);
+        return;
+      }
+      if (message.method === "ui/notifications/tool-result") {
+        handleToolResult(message.params);
+      }
+      if (message.method === "ui/notifications/host-context-changed") {
+        document.documentElement.dataset.theme = message.params?.theme || document.documentElement.dataset.theme || "";
+      }
+    });
+
+    function request(method, params) {
+      const id = nextMessageId++;
+      const payload = { jsonrpc: "2.0", id, method, params };
+      const promise = new Promise((resolve, reject) => {
+        pending.set(id, { resolve, reject });
+        setTimeout(() => {
+          if (!pending.has(id)) return;
+          pending.delete(id);
+          reject(new Error("MCP Apps 宿主响应超时。"));
+        }, 60000);
+      });
+      window.parent.postMessage(payload, "*");
+      return promise;
+    }
+
+    function notify(method, params) {
+      window.parent.postMessage({ jsonrpc: "2.0", method, params }, "*");
+    }
+
+    async function connect() {
+      const init = await request("ui/initialize", {
+        appInfo: { name: "code-knowledge-explorer", version: "0.1.0" },
+        appCapabilities: { availableDisplayModes: ["inline", "fullscreen"] },
+        protocolVersion: PROTOCOL_VERSION
+      });
+      if (init?.hostContext?.theme) {
+        document.documentElement.dataset.theme = init.hostContext.theme;
+      }
+      notify("ui/notifications/initialized", {});
+      setupResizeNotifications();
+      await restoreLastSession();
+    }
+
+    function setupResizeNotifications() {
+      const update = () => {
+        const height = Math.ceil(document.documentElement.getBoundingClientRect().height);
+        const width = Math.ceil(document.documentElement.getBoundingClientRect().width);
+        notify("ui/notifications/size-changed", { width, height });
+      };
+      const observer = new ResizeObserver(update);
+      observer.observe(document.documentElement);
+      observer.observe(document.body);
+      update();
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function saveSessionId(sessionId) {
+      if (!sessionId) return;
+      try {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, sessionId);
+      } catch {
+        // 某些宿主环境可能禁用 sessionStorage，恢复仍可依赖 tool result 中的 sessionId。
+      }
+    }
+
+    function readSessionId() {
+      try {
+        return sessionStorage.getItem(SESSION_STORAGE_KEY) || "";
+      } catch {
+        return "";
+      }
+    }
+
+    async function restoreLastSession() {
+      const sessionId = readSessionId();
+      if (sessionId) await restoreQuizState(sessionId);
+    }
+
+    async function restoreQuizState(sessionId) {
+      if (!sessionId || restoringSessionId === sessionId) return false;
+      restoringSessionId = sessionId;
+      try {
+        const toolResult = await request("tools/call", {
+          name: "get_code_exploration_quiz_state",
+          arguments: { sessionId }
+        });
+        if (toolResult?.structuredContent?.submission) {
+          renderSubmission(toolResult.structuredContent.submission);
+          return true;
+        }
+        return false;
+      } catch {
+        return false;
+      } finally {
+        restoringSessionId = null;
+      }
+    }
+
+    function renderList(items, renderer) {
+      if (!Array.isArray(items) || items.length === 0) return '<p class="muted">没有记录。</p>';
+      return `<div class="summary-list">${items.map((item) => `<div class="item">${renderer(item)}</div>`).join("")}</div>`;
+    }
+
+    function renderEvidence(evidence) {
+      if (!Array.isArray(evidence) || evidence.length === 0) return "";
+      return evidence.map((item) => {
+        const loc = [item.path, item.lines || item.line, item.symbol].filter(Boolean).join(":");
+        return `<span class="path">${escapeHtml(loc)}</span>`;
+      }).join(" ");
+    }
+
+    function renderArchitecture(summary = {}) {
+      const relatedFiles = summary.relatedFiles || summary.directoriesFiles || [];
+      const coreModules = summary.coreModules || [];
+      const callChains = summary.callChains || [];
+      const dataFlows = summary.dataFlows || [];
+      const designNotes = summary.designNotes || [];
+      return `
+        <section class="section">
+          <h2>相关目录与文件</h2>
+          ${renderList(relatedFiles, (item) => `
+            <p class="path">${escapeHtml(item.path || item.directory || "")}</p>
+            <p>${escapeHtml(item.role || item.description || "")}</p>
+            <p class="muted">${escapeHtml(item.evidence || "")}</p>
+          `)}
+        </section>
+        <section class="section">
+          <h2>核心模块职责</h2>
+          ${renderList(coreModules, (item) => `
+            <p><strong>${escapeHtml(item.name || item.path || "模块")}</strong></p>
+            <p class="path">${escapeHtml(item.path || "")}</p>
+            <p>${escapeHtml(item.responsibility || item.role || "")}</p>
+            <p class="muted">${escapeHtml(item.evidence || "")}</p>
+          `)}
+        </section>
+        <section class="section">
+          <h2>关键调用链</h2>
+          ${renderList(callChains, (chain) => `
+            <p><strong>${escapeHtml(chain.name || "调用链")}</strong></p>
+            ${renderList(chain.steps || [], (step) => `
+              <p class="path">${escapeHtml([step.path, step.line, step.symbol].filter(Boolean).join(":"))}</p>
+              <p>${escapeHtml(step.description || "")}</p>
+            `)}
+          `)}
+        </section>
+        <section class="section">
+          <h2>数据结构与状态流转</h2>
+          ${renderList(dataFlows, (flow) => `
+            <p><strong>${escapeHtml(flow.name || "数据流")}</strong></p>
+            ${renderList(flow.steps || [], (step) => `
+              <p class="path">${escapeHtml([step.path, step.line, step.symbol].filter(Boolean).join(":"))}</p>
+              <p>${escapeHtml(step.description || "")}</p>
+            `)}
+          `)}
+        </section>
+        <section class="section">
+          <h2>设计意图与复杂点</h2>
+          ${renderList(designNotes, (note) => `
+            <p><strong>${escapeHtml(note.point || "设计点")}</strong></p>
+            <p>${escapeHtml(note.complexity || note.description || "")}</p>
+            <p>${renderEvidence(note.evidence)}</p>
+          `)}
+        </section>
+      `;
+    }
+
+    function renderQuiz(quiz) {
+      currentQuiz = quiz;
+      saveSessionId(quiz.sessionId);
+      const app = document.getElementById("app");
+      app.innerHTML = `
+        <header>
+          <div>
+            <h1>${escapeHtml(quiz.title)}</h1>
+            <p class="muted">${escapeHtml(quiz.explorationGoal)}</p>
+          </div>
+          <div class="badge">5题</div>
+        </header>
+        <div class="grid">
+          <aside>
+            ${quiz.assumptions?.length ? `
+              <section class="section">
+                <h2>探索假设</h2>
+                ${renderList(quiz.assumptions, (item) => `<p>${escapeHtml(item)}</p>`)}
+              </section>
+            ` : ""}
+            ${renderArchitecture(quiz.architectureSummary)}
+            ${Array.isArray(quiz.nextReading) && quiz.nextReading.length ? `
+              <section class="section">
+                <h2>建议阅读</h2>
+                ${renderList(quiz.nextReading, (item) => `
+                  <p class="path">${escapeHtml(item.path || "")}</p>
+                  <p>${escapeHtml(item.reason || "")}</p>
+                `)}
+              </section>
+            ` : ""}
+          </aside>
+          <section>
+            <form id="quiz-form">
+              ${quiz.questions.map((question, index) => `
+                <article class="question">
+                  <div class="question-title">
+                    <span class="badge">${index + 1}</span>
+                    <h2>${escapeHtml(question.stem)}</h2>
+                  </div>
+                  <div class="options">
+                    ${question.options.map((option) => `
+                      <label class="option">
+                        <input type="radio" name="${escapeHtml(question.id)}" value="${escapeHtml(option.id)}">
+                        <span><strong>${escapeHtml(option.id)}.</strong> ${escapeHtml(option.text)}</span>
+                      </label>
+                    `).join("")}
+                  </div>
+                  <div class="meta">
+                    <p>考察：${escapeHtml(question.knowledgePoint || "")}</p>
+                    <p>${renderEvidence(question.codeEvidence)}</p>
+                  </div>
+                </article>
+              `).join("")}
+              <div class="actions">
+                <button type="submit">提交答案</button>
+                <p id="form-status" class="muted"></p>
+              </div>
+            </form>
+          </section>
+        </div>
+      `;
+      document.getElementById("quiz-form").addEventListener("submit", submitQuiz);
+    }
+
+    async function submitQuiz(event) {
+      event.preventDefault();
+      if (!currentQuiz || submitting) return;
+      const form = event.currentTarget;
+      const status = document.getElementById("form-status");
+      const answers = {};
+      for (const question of currentQuiz.questions) {
+        const checked = form.querySelector(`input[name="${CSS.escape(question.id)}"]:checked`);
+        if (!checked) {
+          status.textContent = "还有题目未选择。";
+          status.className = "error";
+          return;
+        }
+        answers[question.id] = checked.value;
+      }
+      submitting = true;
+      status.textContent = "正在判题...";
+      status.className = "muted";
+      form.querySelector("button").disabled = true;
+      try {
+        const toolResult = await request("tools/call", {
+          name: "submit_code_exploration_quiz",
+          arguments: { sessionId: currentQuiz.sessionId, answers }
+        });
+        handleToolResult(toolResult);
+      } catch (error) {
+        status.textContent = error.message;
+        status.className = "error";
+        form.querySelector("button").disabled = false;
+      } finally {
+        submitting = false;
+      }
+    }
+
+    function renderSubmission(submission) {
+      saveSessionId(submission.sessionId);
+      const app = document.getElementById("app");
+      app.innerHTML = `
+        <header>
+          <div>
+            <h1>${escapeHtml(submission.title || "答题结果")}</h1>
+            <p class="muted">${escapeHtml(submission.masterySummary || "")}</p>
+          </div>
+          <div class="score">
+            <strong>${escapeHtml(submission.score)}</strong>
+            <span>/ ${escapeHtml(submission.total)}</span>
+          </div>
+        </header>
+        <section class="section">
+          <h2>学习反馈总结</h2>
+          <p>${escapeHtml(submission.masterySummary || "")}</p>
+        </section>
+        ${submission.results.map((item) => `
+          <article class="question result ${item.isCorrect ? "correct" : "incorrect"}">
+            <div class="question-title">
+              <span class="badge">${escapeHtml(item.number)}</span>
+              <h2>${escapeHtml(item.stem)}</h2>
+            </div>
+            <p class="verdict ${item.isCorrect ? "correct-text" : "incorrect-text"}">${item.isCorrect ? "答对" : "答错"}</p>
+            <p>你的选择：${escapeHtml(item.userAnswer)}</p>
+            <p>正确答案：${escapeHtml(item.correctAnswer)}</p>
+            <div class="meta">
+              <p>考察：${escapeHtml(item.knowledgePoint || "")}</p>
+              <p>解释：${escapeHtml(item.explanation || "")}</p>
+              <p>代码证据：${renderEvidence(item.codeEvidence)}</p>
+              <p>需要补充理解：${escapeHtml(item.reviewFocus || "")}</p>
+            </div>
+          </article>
+        `).join("")}
+        <section class="section">
+          <h2>下一步阅读</h2>
+          ${renderList(submission.recommendedNextReading || [], (item) => `
+            <p class="path">${escapeHtml(item.path || "")}</p>
+            <p>${escapeHtml(item.reason || "")}</p>
+          `)}
+        </section>
+      `;
+    }
+
+    function handleToolResult(result) {
+      if (result?.structuredContent?.quiz) {
+        renderQuiz(result.structuredContent.quiz);
+        void restoreQuizState(result.structuredContent.quiz.sessionId);
+      } else if (result?.structuredContent?.submission) {
+        renderSubmission(result.structuredContent.submission);
+      }
+    }
+
+    connect().catch((error) => {
+      document.getElementById("app").innerHTML = `<p class="status error">${escapeHtml(error.message)}</p>`;
+    });
+  </script>
+</body>
+</html>
