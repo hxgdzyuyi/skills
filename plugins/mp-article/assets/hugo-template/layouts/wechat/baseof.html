@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "zh-CN" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  {{ with .Params.description }}
+    <meta name="description" content="{{ . }}">
+  {{ end }}
+  {{ with resources.Get "css/wechat-preview.css" }}
+    {{ $styles := . | minify }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+  {{ end }}
+</head>
+<body>
+  {{ block "main" . }}{{ end }}
+  {{ with resources.Get "js/wechat-copy.js" }}
+    {{ $script := . | minify }}
+    <script src="{{ $script.RelPermalink }}" defer></script>
+  {{ end }}
+</body>
+</html>

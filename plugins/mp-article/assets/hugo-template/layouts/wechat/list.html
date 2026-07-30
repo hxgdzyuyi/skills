@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <main class="wechat-index">
+    <header>
+      <p class="wechat-index-kicker">MP ARTICLE</p>
+      <h1>{{ .Title }}</h1>
+      <p>使用 Hugo 管理、预览并交付微信公众号文章。</p>
+    </header>
+    <section class="wechat-index-list">
+      {{ range .Pages.ByDate.Reverse }}
+        <article>
+          <p>{{ .Date.Format "2006-01-02" }}</p>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+        </article>
+      {{ else }}
+        <p>还没有文章。使用 mp-article-project 创建第一篇文章。</p>
+      {{ end }}
+    </section>
+  </main>
+{{ end }}

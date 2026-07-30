@@ -1,0 +1,28 @@
+{{ define "main" }}
+  {{ range .Resources.Match "assets/**" }}
+    {{ $resourceURL := .RelPermalink }}
+  {{ end }}
+  <main class="wechat-preview">
+    <section class="wechat-article-shell" aria-label="微信公众号文章预览">
+      <header class="wechat-article-header">
+        <h1>{{ .Title }}</h1>
+        <p>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          <span>公众号文章预览</span>
+        </p>
+        {{ with .Params.description }}
+          <p class="wechat-article-description">{{ . }}</p>
+        {{ end }}
+        {{ with .Params.cover }}
+          {{ with $.Resources.GetMatch . }}
+            <img class="wechat-cover" src="{{ .RelPermalink }}" alt="">
+          {{ end }}
+        {{ end }}
+      </header>
+      <article id="js_content" class="rich_media_content">
+        {{ .RawContent | safeHTML }}
+      </article>
+    </section>
+    {{ partial "wechat/copy-button.html" . }}
+  </main>
+{{ end }}

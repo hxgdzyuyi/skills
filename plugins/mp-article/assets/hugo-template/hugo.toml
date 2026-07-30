@@ -1,0 +1,8 @@
+baseURL = "/"
+languageCode = "zh-CN"
+title = "公众号文章"
+disableKinds = ["home", "taxonomy", "term", "RSS", "sitemap"]
+
+[params.mpArticle]
+enabled = true
+schemaVersion = 1
