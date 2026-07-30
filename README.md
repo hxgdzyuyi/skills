@@ -1,34 +1,61 @@
 # hxgdzyuyi Skills
 
-## 1. Codex 文章轮播卡片
+## 1. Codex 公众号文章
 
-`article-card-carousel` 是给 Codex 使用的文章轮播卡片插件。它可以把文章、笔记、草稿或参考素材整理成有序图文卡片，并引导 Codex 完成 SVG 模板、预览检查和最终 PNG 渲染。
+`mp-article` 是面向微信公众号文章生产与管理的 Codex 插件。它既可以把草稿或 Markdown 整理成公众号编辑器可直接粘贴的全内联 HTML，也可以初始化和维护完整的 Hugo 公众号文章工程。
 
-![文章轮播卡片演示](docs/article-card-carousel/assets/fuzhou-weekly-arts-collage-white.webp)
+<img src="plugins/mp-article/assets/icon.png" width="128" alt="公众号文章插件图标">
+
+插件提供两个可独立使用的 Skill：
+
+- `mp-rich-html`：在任意已有项目中新增或编辑公众号兼容 HTML，不要求使用 Hugo。
+- `mp-article-project`：初始化、检查和管理 Hugo 公众号文章工程，支持文章 Bundle、本地预览和复制交付。
+
+工程模式遵循 Hugo 原生目录体系：
+
+```text
+content/wechat/<slug>/
+├── index.html
+└── assets/
+```
+
+文章正文使用公众号兼容的全内联样式。预览页面模拟 `.rich_media_content` 环境，并通过复制工具只提取 `#js_content`，同时尝试内联计算样式和本地图片。
 
 ### 安装
 
-本仓库已经提供 Codex 本地插件市场描述文件：
+本仓库提供 Codex 本地插件市场描述文件：
 
-```
+```text
 .agents/plugins/marketplace.json
 ```
 
-在 Codex 中添加或启用这个 marketplace 后，安装 `article-card-carousel` 插件。插件源码位于：
+添加或启用该 marketplace 后安装 `mp-article`。插件源码位于：
 
-```
-plugins/article-card-carousel
-```
-
-安装后，可以直接让 Codex 使用 `文章轮播卡片` / `article-card-carousel`，例如：
-
-```
-根据我的笔记生成文章轮播卡片。
-把这篇文章拆成多张 SVG 卡片。
-参考这些图片生成通用卡片模板。
+```text
+plugins/mp-article
 ```
 
-## 2. Repository Introduction
+### 使用示例
+
+```text
+把这篇 Markdown 整理成公众号可直接粘贴的富文本 HTML。
+初始化当前目录为公众号文章 Hugo 工程。
+在公众号工程中新增一篇文章，并启动本地预览。
+编辑已有文章，保留素材和 Front Matter。
+```
+
+详细说明：
+
+- [公众号富文本 HTML](plugins/mp-article/skills/mp-rich-html/SKILL.md)
+- [公众号文章工程](plugins/mp-article/skills/mp-article-project/SKILL.md)
+
+## 2. 其他 Codex 插件
+
+### 文章轮播卡片
+
+`article-card-carousel` 可以把文章、笔记或草稿整理成有序 SVG/PNG 图文卡片，包含模板、预览检查和渲染流程。详见 [文章轮播卡片 Skill](plugins/article-card-carousel/skills/article-card-carousel/SKILL.md)。
+
+## 3. Repository Introduction
 
 This repository contains skills for Claude Code and plugins for Codex.
 
@@ -62,11 +89,13 @@ Codex plugins are exposed through the local marketplace descriptor:
 .agents/plugins/marketplace.json
 ```
 
-The marketplace currently provides the `article-card-carousel` plugin from:
+The primary Codex plugin is `mp-article`:
 
+```text
+plugins/mp-article
 ```
-plugins/article-card-carousel
-```
+
+The marketplace also includes `article-card-carousel` and other local plugins.
 
 ### Skills
 
@@ -86,5 +115,5 @@ plugins/article-card-carousel
 
 | Name | Display Name | Description | Documentation |
 |------|--------------|-------------|---------------|
-| article-card-carousel | 文章轮播卡片 | 用 LLM 引导从笔记、草稿和参考风格生成有序文章轮播卡片 SVG/PNG，覆盖内容整理、模板设计、预览检查和最终渲染。 | [SKILL.md](plugins/article-card-carousel/skills/article-card-carousel/SKILL.md) |
 | mp-article | 公众号文章 | 生成公众号兼容富文本，并初始化和管理可预览、可复制交付的 Hugo 公众号文章工程。 | [SKILL.md](plugins/mp-article/skills/mp-article-project/SKILL.md) |
+| article-card-carousel | 文章轮播卡片 | 将文章或笔记整理成 SVG/PNG 图文卡片。 | [SKILL.md](plugins/article-card-carousel/skills/article-card-carousel/SKILL.md) |

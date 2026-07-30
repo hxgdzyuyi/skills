@@ -1,0 +1,4 @@
+interface:
+  display_name: "磁道凡仙：互动故事"
+  short_description: "以古龙式武侠笔触创作约100次互动的万磁王穿越修仙故事"
+  default_prompt: "使用 $magneto-mortal-cultivation-story，以古龙式武侠笔触开始创作万磁王穿越《凡人修仙传》的互动小说。"

@@ -20,6 +20,12 @@
       "skills": "./"
     },
     {
+      "name": "magneto-mortal-cultivation-story",
+      "description": "约100次互动的万磁王穿越《凡人修仙传》三幕小说故事，支持可变大纲与连续性记录。",
+      "source": "./skills/magneto-mortal-cultivation-story",
+      "skills": "./"
+    },
+    {
       "name": "nova-yong-ge-restaurant-consulting",
       "description": "勇哥餐饮咨询顾问——扮演\"勇哥\"，为用户提供专业的餐饮创业与经营咨询。",
       "source": "./skills/nova-yong-ge-restaurant-consulting",
