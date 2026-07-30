@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{ $articles := where .Site.RegularPages "Type" "wechat" }}
   <main class="wechat-index">
     <header>
       <p class="wechat-index-kicker">MP ARTICLE</p>
@@ -6,7 +7,7 @@
       <p>使用 Hugo 管理、预览并交付微信公众号文章。</p>
     </header>
     <section class="wechat-index-list">
-      {{ range .Pages.ByDate.Reverse }}
+      {{ range $articles.ByDate.Reverse }}
         <article>
           <p>{{ .Date.Format "2006-01-02" }}</p>
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

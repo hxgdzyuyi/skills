@@ -12,7 +12,7 @@ description: 把文章、草稿、Markdown 或主题整理成微信公众号编�
 先根据目标选择模式：
 
 - 独立模式：用户直接调用且没有指定标准 Hugo 文章目标。写入 `./wechat-output/{slug}.html`。
-- 工程模式：由 `mp-article-project` 调用，或目标是 `content/wechat/{slug}/index.html`。直接编辑该文件。
+- 工程模式：由 `mp-article-project` 调用，或目标是 `content/{slug}/index.html` 且 Front Matter 为 `type: wechat`。直接编辑该文件。
 - 用户明确指定现有 HTML 文件时，原地编辑，不另建输出。
 
 显式调用本 Skill 时，不因当前目录缺少 Hugo 而初始化或改造工程。
@@ -110,9 +110,9 @@ python3 <plugin-root>/scripts/lint_mp_html.py ./wechat-output/{slug}.html --mode
 ```html
 ---
 title: "文章标题"
+type: wechat
 date: 2026-07-30T00:00:00+08:00
 description: ""
-draft: true
 cover: ""
 ---
 <section style="color:#3f3f3f;font-size:15px;line-height:1.75;letter-spacing:0.5px;word-break:break-word;">
@@ -123,7 +123,7 @@ cover: ""
 检查命令：
 
 ```bash
-python3 <plugin-root>/scripts/lint_mp_html.py content/wechat/{slug}/index.html --mode hugo
+python3 <plugin-root>/scripts/lint_mp_html.py content/{slug}/index.html --mode hugo
 ```
 
 ## 交付

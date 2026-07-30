@@ -2,27 +2,55 @@
   {{ range .Resources.Match "assets/**" }}
     {{ $resourceURL := .RelPermalink }}
   {{ end }}
-  <main class="wechat-preview">
-    <section class="wechat-article-shell" aria-label="微信公众号文章预览">
-      <header class="wechat-article-header">
-        <h1>{{ .Title }}</h1>
-        <p>
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-          <span>公众号文章预览</span>
-        </p>
-        {{ with .Params.description }}
-          <p class="wechat-article-description">{{ . }}</p>
-        {{ end }}
-        {{ with .Params.cover }}
-          {{ with $.Resources.GetMatch . }}
-            <img class="wechat-cover" src="{{ .RelPermalink }}" alt="">
+  {{ $cover := .Params.cover | default .Params.cover_image }}
+  {{ $location := .Params.location | default .Site.Params.wechatLocation | default "北京" }}
+  <div id="js_article" style="position: relative;" class="rich_media">
+    <div id="js_top_ad_area" class="top_banner" aria-hidden="true"></div>
+    <div id="js_base_container" class="rich_media_inner">
+      <div
+        class="wx_row_immersive_stream_wrap"
+        id="js_row_immersive_stream_wrap"
+        {{ if not $cover }}style="display: none;"{{ end }}
+        aria-hidden="true"
+      >
+        <div id="js_row_immersive_cover_img">
+          {{ with $cover }}
+            <img src="{{ . | safeURL }}" alt="cover_image" class="wx_follow_avatar_pic">
           {{ end }}
-        {{ end }}
-      </header>
-      <article id="js_content" class="rich_media_content">
-        {{ .RawContent | safeHTML }}
-      </article>
-    </section>
-    {{ partial "wechat/copy-button.html" . }}
-  </main>
+        </div>
+        <div id="js_row_immersive_stream_mask" class="wx_row_immersive_stream_mask"></div>
+      </div>
+      <div id="page-content" class="rich_media_area_primary">
+        <div class="rich_media_area_primary_inner">
+          <div id="img-content" class="rich_media_wrp smartmd-article" style="width:578px;max-width:100%;margin:0 auto;">
+            <h1 class="rich_media_title" id="activity-name">
+              <span class="js_title_inner">{{ .Title }}</span>
+            </h1>
+            <div id="meta_content" class="rich_media_meta_list">
+              <span id="meta_content_hide_info">
+                <em id="publish_time" class="rich_media_meta rich_media_meta_text">
+                  {{ .Date.Format "2006-01-02" }}
+                </em>
+                <em
+                  id="js_ip_wording_wrp"
+                  class="rich_media_meta rich_media_meta_text"
+                  style="display: inline-block;"
+                  aria-label="{{ $location }}"
+                >
+                  <span id="js_a11y_op_ip_wording" aria-hidden="true"></span>
+                  <span aria-hidden="true" id="js_ip_wording">{{ $location }}</span>
+                </em>
+              </span>
+            </div>
+            <div
+              class="rich_media_content js_underline_content autoTypeSetting24psection fix_apple_default_style"
+              id="js_content"
+            >
+              {{ .RawContent | safeHTML }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {{ end }}

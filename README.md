@@ -14,12 +14,18 @@
 工程模式遵循 Hugo 原生目录体系：
 
 ```text
-content/wechat/<slug>/
+content/<slug>/
 ├── index.html
 └── assets/
 ```
 
-文章正文使用公众号兼容的全内联样式。预览页面模拟 `.rich_media_content` 环境，并通过复制工具只提取 `#js_content`，同时尝试内联计算样式和本地图片。
+文章 Front Matter 使用 `type: wechat` 匹配公众号 Layout。Hugo 首页 `/` 展示公众号文章列表，文章文件路径和访问地址都不带 `/wechat/` 前缀。
+
+初始化时还会在工程根目录创建 `AGENTS.md` 和最小化 `.gitignore`；如果文件已经存在，则保留原内容并在末尾追加 `mp-article` 插件说明或 Hugo 忽略规则。
+
+工程要求 Hugo v0.162.0 或更高版本。生成的配置使用 `locale`，并只为 `text/html` 显式放行内容构建，兼容新版 Hugo 对原始 HTML 正文的默认安全限制。预览层使用项目内原生 CSS/JavaScript 和 Hugo Pipes，不需要 Tailwind CSS、PostCSS 或 npm。
+
+文章正文使用公众号兼容的全内联样式。单篇预览复刻 `image2-mp` 的微信 DOM、WeUI、腾讯公众号样式和 `578px` 正文画布，并通过复制工具只提取 `#js_content`，同时尝试内联计算样式和本地图片。
 
 ### 安装
 

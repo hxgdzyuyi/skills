@@ -1,8 +1,11 @@
 baseURL = "/"
-languageCode = "zh-CN"
+locale = "zh-CN"
 title = "公众号文章"
-disableKinds = ["home", "taxonomy", "term", "RSS", "sitemap"]
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
 
 [params.mpArticle]
 enabled = true
 schemaVersion = 1
+
+[security]
+allowContent = ['^text/html$']

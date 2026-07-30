@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ .Site.LanguageCode | default "zh-CN" }}">
+<html lang="{{ .Site.Language.Locale | default "zh-CN" }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +7,26 @@
   {{ with .Params.description }}
     <meta name="description" content="{{ . }}">
   {{ end }}
+  <link rel="stylesheet" href="{{ "static/weui.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "static/tencent_portfolio_light.mnicjuz14bbf866e.css" | relURL }}">
   {{ with resources.Get "css/wechat-preview.css" }}
     {{ $styles := . | minify }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
   {{ end }}
+  {{ with resources.Get "css/mp-article-index.css" }}
+    {{ $indexStyles := . | minify }}
+    <link rel="stylesheet" href="{{ $indexStyles.RelPermalink }}">
+  {{ end }}
 </head>
-<body>
+<body class="{{ if .IsPage }}smartmd-site wx_wap_page mm_appmsg appmsg_skin_default appmsg_content_new_ui data_color_scheme_light smartmd-single-page{{ else }}smartmd-site{{ end }}" data-weui-theme="light">
   {{ block "main" . }}{{ end }}
+  {{ if .IsPage }}
+    <aside class="smartmd-tools" id="smartmd-tools" aria-label="页面操作">
+      <div class="smartmd-copy-slot" id="smartmd-copy-slot">
+        {{ partial "wechat/copy-button.html" . }}
+      </div>
+    </aside>
+  {{ end }}
   {{ with resources.Get "js/wechat-copy.js" }}
     {{ $script := . | minify }}
     <script src="{{ $script.RelPermalink }}" defer></script>

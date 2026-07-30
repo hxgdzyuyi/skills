@@ -34,24 +34,24 @@ python3 <plugin-root>/scripts/mp_article_project.py new --root <project> --slug 
 
 1. 确定用户指定的项目根目录，默认使用当前目录。
 2. 运行 `doctor`。
-3. 退出码为 `2` 时，向用户报告检测结果和脚本给出的安装方式，停止初始化。
+3. 退出码为 `2` 时，向用户报告检测结果和脚本给出的安装方式，停止初始化；Hugo 低于 v0.162.0 时同样先升级。
 4. 退出码为 `1` 且用户确实要求工程化管理时，运行 `init`。
 5. `init` 报告冲突时停止，不自行覆盖、重命名或备份。
 6. 再运行 `doctor`，确认工程契约完整。
 
-空目录由 Hugo CLI 创建基础站点。非空目录只增量安装缺失文件。现有 `hugo.toml` 只允许追加缺失的 `[params.mpArticle]` 标记；已存在但值冲突时停止。
+空目录由 Hugo CLI 创建基础站点。非空目录只增量安装缺失文件。生成的 `hugo.toml` 使用 `locale`，通过 `security.allowContent = ['^text/html$']` 允许公众号 `index.html` 正文，并保持 Hugo Home 可用。接入已有工程时自动迁移顶层 `languageCode`、补充缺失的 HTML 白名单和 `[params.mpArticle]` 标记；已有但不兼容的安全策略或工程标记视为冲突，不覆盖。旧版 `content/wechat/<slug>` Bundle 在确认无目标冲突后迁移到 `content/<slug>`，并补充 `type: wechat`。项目根目录必须包含 `AGENTS.md` 和最小化 `.gitignore`：文件不存在时创建，已经存在时保留原内容并在末尾追加带标记的 `mp-article` 工程说明或 Hugo 忽略规则。单篇文章预览复刻 `image2-mp` 的微信 DOM、WeUI、腾讯公众号样式和 `578px` 正文画布；全部依赖保存在项目内，不添加 Tailwind CSS、PostCSS、npm 构建链或外部 CSS CDN。
 
 ## 新建文章
 
 1. 将标题转成小写英文、数字和连字符组成的 slug；无法可靠翻译时向用户确认 slug。
-2. 运行 `new` 创建 `content/wechat/{slug}/index.html` 和同级 `assets/`。
+2. 运行 `new` 创建 `content/{slug}/index.html` 和同级 `assets/`；Front Matter 使用 `type: wechat`，不设置 `draft: true`。
 3. 读取并遵循 `../mp-rich-html/SKILL.md`，使用工程模式填充正文。
 4. 图片放进当前文章的 `assets/`，正文使用 `assets/{file}`。
 5. 运行 `lint_mp_html.py <article> --mode hugo`，修复全部错误。
 
 ## 编辑文章
 
-1. 根据用户给出的 slug、标题或文件路径定位 `content/wechat/{slug}/index.html`。
+1. 根据用户给出的 slug、标题或文件路径定位 `content/{slug}/index.html`。
 2. 保留 Front Matter、未涉及正文和现有资源。
 3. 读取并遵循 `../mp-rich-html/SKILL.md`，使用工程模式执行修改。
 4. 运行 Hugo 模式静态检查。
@@ -72,6 +72,8 @@ hugo --config hugo.toml -D
 
 构建结果由 Hugo 写入标准 `public/` 目录。该命令只构建静态页面，不登录或发布到公众号。
 
+公众号文章列表页位于网站根路径 `/`，文章详情位于 `/{slug}/`。
+
 预览页面中的标题、日期、复制按钮和灰色页面背景属于预览外壳。只有 `#js_content` 的内部内容会进入剪贴板。
 
 交付时说明：
@@ -84,4 +86,4 @@ hugo --config hugo.toml -D
 
 ## 工程约束
 
-需要详细判断时读取插件根目录的 `references/project-contract.md`。不要在生成的项目中创建插件专用状态目录；工程状态只由 Hugo 原生结构和 `hugo.toml` 参数表达。
+需要详细判断时读取插件根目录的 `references/project-contract.md`。不要在生成的项目中创建插件专用状态目录；工程状态由 Hugo 原生结构、`hugo.toml` 参数和项目根目录的 `AGENTS.md` 表达。

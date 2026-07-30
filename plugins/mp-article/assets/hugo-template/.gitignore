@@ -1,0 +1,9 @@
+# mp-article:begin
+# Hugo generated files
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Local OS metadata
+.DS_Store
+# mp-article:end
