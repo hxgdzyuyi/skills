@@ -1,6 +1,6 @@
 {
   "name": "mp-article",
-  "version": "0.2.5+codex.20260730102016",
+  "version": "0.2.7+codex.20260731081041",
   "description": "\u751f\u6210\u516c\u4f17\u53f7\u517c\u5bb9\u5bcc\u6587\u672c\uff0c\u5e76\u521d\u59cb\u5316\u548c\u7ba1\u7406\u53ef\u9884\u89c8\u3001\u53ef\u590d\u5236\u4ea4\u4ed8\u7684 Hugo \u516c\u4f17\u53f7\u6587\u7ae0\u5de5\u7a0b\u3002",
   "author": {
     "name": "hxgdzyuyi"

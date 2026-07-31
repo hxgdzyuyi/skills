@@ -40,6 +40,8 @@ description: 把文章、草稿、Markdown 或主题整理成微信公众号编�
 
 工程模式额外允许 `assets/{file}` 相对路径。文件必须存在于当前文章 Bundle 的 `assets/` 目录；复制页面会尝试将其转换为 Base64。不要使用 `../` 或项目根绝对路径。
 
+- **图片间距规则**：当 `<img>` 需要设置外部间距时，不直接给 `<img>` 添加 `margin`；应使用 `<section>` 包裹图片，由 `<section>` 控制 `margin`，并设置 `line-height:0`。无需外部间距时可以直接使用 `<img>`。
+
 ## Flex 和多列
 
 Flex 只用于简单单行对齐：
@@ -124,6 +126,18 @@ cover: ""
 
 ```bash
 python3 <plugin-root>/scripts/lint_mp_html.py content/{slug}/index.html --mode hugo
+```
+
+## 图片间距规则
+
+- 图片需要设置外部间距时，不直接给 `img` 添加 `margin`。
+- 使用 `section` 包裹图片，由 `section` 通过内联样式控制 `margin`，并设置 `line-height:0`。
+- 图片不需要外部间距时，可以直接使用 `img`。
+
+```html
+<section style="margin:24px 0;line-height:0;">
+  <img src="assets/example.jpg" alt="图片说明" style="display:block;width:100%;height:auto;">
+</section>
 ```
 
 ## 交付
