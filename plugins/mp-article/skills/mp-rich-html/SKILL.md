@@ -128,18 +128,6 @@ cover: ""
 python3 <plugin-root>/scripts/lint_mp_html.py content/{slug}/index.html --mode hugo
 ```
 
-## 图片间距规则
-
-- 图片需要设置外部间距时，不直接给 `img` 添加 `margin`。
-- 使用 `section` 包裹图片，由 `section` 通过内联样式控制 `margin`，并设置 `line-height:0`。
-- 图片不需要外部间距时，可以直接使用 `img`。
-
-```html
-<section style="margin:24px 0;line-height:0;">
-  <img src="assets/example.jpg" alt="图片说明" style="display:block;width:100%;height:auto;">
-</section>
-```
-
 ## 交付
 
 独立模式告诉用户：
