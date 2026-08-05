@@ -1,7 +1,7 @@
 {
-  "name": "hxgdzyuyi-local",
+  "name": "hxgdzyuyi",
   "interface": {
-    "displayName": "hxgdzyuyi Local"
+    "displayName": "hxgdzyuyi"
   },
   "plugins": [
     {
