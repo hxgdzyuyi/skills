@@ -113,6 +113,7 @@ The marketplace also includes `article-card-carousel` and other local plugins.
 | nova-yong-ge-restaurant-consulting | 勇哥餐饮咨询顾问——扮演"勇哥"，为用户提供专业的餐饮创业与经营咨询。 | [SKILL.md](skills/nova-yong-ge-restaurant-consulting/SKILL.md) |
 | network-resume | 当用户输入 /network-resume 时触发，输出一句固定话术用于在网络中断后继续之前的任务。 | [SKILL.md](skills/network-resume/SKILL.md) |
 | explain-code | 根据用户传入的源码路径或 glob 生成源码解析文档，并汇总文件功能与依赖关系。 | [SKILL.md](skills/explain-code/SKILL.md) |
+| article-to-thread | 输入文章网址，在 Codex 中先分段总结、再逐段改写，默认生成中文纯文本串文，按需配图并输出 Markdown 与 JSON。 | [SKILL.md](skills/article-to-thread/SKILL.md) |
 | refactor-hotspots | 分析 Git 仓库最近频繁被修改的"热点文件"并给出重构建议（DRY、SRP、耦合等视角）。手动调用触发（/refactor-hotspots） | [SKILL.md](skills/refactor-hotspots/SKILL.md) |
 | render-plan | 润色和完善 docs/plans/ 下的计划文档，按标准层面结构整理内容。手动调用触发（/render-plan） | [SKILL.md](skills/render-plan/SKILL.md) |
 | run-plan | 落地 docs/plans/ 下的计划文档到当前项目。传入计划文件路径作为参数即开始执行；不传参数则列出所有可用计划供用户选择，手动触发。 | [SKILL.md](skills/run-plan/SKILL.md) |

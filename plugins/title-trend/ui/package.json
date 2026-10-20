@@ -1,0 +1,20 @@
+{
+  "name": "title-trend-ui",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "host": "node host.mjs",
+    "test": "node test-host.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "esbuild": "0.27.2",
+    "playwright": "1.58.2"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "文章转串文"
+  short_description: "输入文章网址，自动分段总结、逐段改写并输出中文百科风格纯文本串文"
+  default_prompt: "使用 $article-to-thread，由当前 Codex 在同一个 turn 内依次完成取文、分段总结、逐段改写和合并核对，输出中文纯文本串文。"

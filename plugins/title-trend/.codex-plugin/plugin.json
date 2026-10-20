@@ -1,0 +1,32 @@
+{
+  "name": "title-trend",
+  "version": "0.2.0",
+  "author": {
+    "name": "hxgdzyuyi"
+  },
+  "description": "微信公众号选题与标题的外部搜索需求、趋势和增长参考；标准Python MCP Server与MCP Apps评分卡。",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "keywords": [
+    "wechat",
+    "title",
+    "trend",
+    "mcp-apps",
+    "dataforseo"
+  ],
+  "interface": {
+    "displayName": "Title Trend · 标题趋势",
+    "shortDescription": "用真实搜索数据辅助公众号选题与标题优化。",
+    "longDescription": "由当前Agent理解主题、选词和撰写建议，Python查询Bing月度历史、缓存并确定性评分。无需另配模型API。支持标准MCP Apps评分卡与完整文字，评分不代表公众号热度、点击率或爆款概率。",
+    "developerName": "hxgdzyuyi",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Interactive"
+    ],
+    "brandColor": "#087C72",
+    "defaultPrompt": [
+      "分析这个公众号标题的外部搜索趋势：用 Python 自动化办公，如何减少重复工作？"
+    ]
+  }
+}

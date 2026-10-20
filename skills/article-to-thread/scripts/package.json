@@ -1,0 +1,15 @@
+{
+  "name": "article-to-thread-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Extract source material for the standalone Codex article-to-thread skill.",
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node --test extract_article.test.mjs" },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0",
+    "jsdom": "26.1.0",
+    "turndown": "7.2.4",
+    "turndown-plugin-gfm": "1.0.2"
+  }
+}
