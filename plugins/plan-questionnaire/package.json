@@ -1,0 +1,23 @@
+{
+  "name": "plan-questionnaire",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node dist/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:ui": "node scripts/test-ui.mjs",
+    "install:local": "node scripts/install-personal.mjs",
+    "preview": "node dist/server.mjs --preview"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "2.0.3",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright": "^1.55.0"
+  }
+}

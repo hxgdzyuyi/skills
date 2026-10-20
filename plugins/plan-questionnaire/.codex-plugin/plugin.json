@@ -1,0 +1,18 @@
+{
+  "name": "plan-questionnaire",
+  "version": "0.1.1",
+  "description": "本地方案讨论问卷：选择答案、补充说明并继续当前对话。",
+  "author": { "name": "qingyang" },
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "interface": {
+    "displayName": "方案讨论问卷",
+    "shortDescription": "超过三题时，用长问卷一次收集方案选择",
+    "longDescription": "本地 MCP Apps 长问卷，一份支持 1–12 题，可混合单选、多选、自由回答和补充说明。用户统一提交后，整份答案保存并发回当前对话。",
+    "developerName": "qingyang",
+    "category": "Productivity",
+    "capabilities": ["MCP", "Interactive"],
+    "defaultPrompt": ["用问卷和我讨论方案", "把当前选择题显示为问卷"],
+    "brandColor": "#356647"
+  }
+}

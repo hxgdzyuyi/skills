@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "plan-questionnaire": {
+      "type": "stdio",
+      "command": "/opt/homebrew/bin/node",
+      "args": ["dist/server.mjs"],
+      "cwd": "."
+    }
+  }
+}

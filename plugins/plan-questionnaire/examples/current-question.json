@@ -1,0 +1,20 @@
+{
+  "idempotency_key": "mira-mechanics-q03-counter-overwatch-v1",
+  "title": "Mira · 战斗机制讨论",
+  "description": "已确定：火纹与 XCOM 结合、阵营回合、每人 2 行动点，攻击可以 miss。接下来确定反击与警戒的方向。",
+  "questions": [
+    {
+      "id": "reaction_style",
+      "title": "第 3 题：反击与警戒采用哪种方式？",
+      "description": "本题只确定方向。具体触发条件和每回合次数，选定后继续讨论。",
+      "type": "single",
+      "required": true,
+      "allow_other": true,
+      "options": [
+        { "id": "A", "label": "自动反击", "description": "受到攻击时，只要满足射程等条件，就能自动反击，无须提前准备。" },
+        { "id": "B", "label": "预先警戒", "description": "先消耗行动点进入警戒；之后敌人触发条件时，才自动进行反应攻击。" },
+        { "id": "C", "label": "两者结合", "description": "近战受击时可以反击；远程通过提前进入警戒进行反应攻击。", "recommended": true }
+      ]
+    }
+  ]
+}

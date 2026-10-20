@@ -1,0 +1,86 @@
+{
+  "idempotency_key": "mira-mechanics-long-v1",
+  "title": "Mira · 核心机制长问卷",
+  "description": "共 8 题，可一次填写并统一提交。已确定的四方向探索、单个 Q 版主角、阵营回合、两行动点、攻击可 miss 和自动反击不再重复询问。下面只收集尚未确定的方向；每题都可填写其他想法或补充说明。",
+  "questions": [
+    {
+      "id": "counter_limit",
+      "title": "每名角色一轮能自动反击几次？",
+      "description": "这里一轮指从该角色本方回合开始，到下次本方回合开始。射程、命中和反击连锁的细节之后再定。",
+      "options": [
+        { "id": "A", "label": "每轮最多一次", "description": "容易判断敌方回合的风险，多个敌人连续围攻时反击能力有限。", "recommended": true },
+        { "id": "B", "label": "满足条件就反击", "description": "不单独限制次数，每次受到攻击都检查反击条件。" },
+        { "id": "C", "label": "使用独立反应点", "description": "反击消耗反应点，角色或技能可以拥有不同的反应点数量。" }
+      ]
+    },
+    {
+      "id": "encounter_trigger",
+      "title": "探索中主要怎样触发遭遇战？",
+      "options": [
+        { "id": "A", "label": "可见敌人与剧情事件", "description": "接近敌人、闯入明确警戒区或触发剧情后开战，通常能预判风险。", "recommended": true },
+        { "id": "B", "label": "加入随机遭遇", "description": "野外行走也可能触发随机战斗，与可见敌人和剧情战并存。" },
+        { "id": "C", "label": "只在明确事件中开战", "description": "通过地点、任务节点或交互进入战斗，不因单纯经过敌人而开战。" }
+      ]
+    },
+    {
+      "id": "fog_information",
+      "title": "战争迷雾隐藏哪些地图信息？",
+      "options": [
+        { "id": "A", "label": "未知地形也隐藏", "description": "探索后保留地形记忆，敌人和其他动态状态只有在当前视野内才更新。", "recommended": true },
+        { "id": "B", "label": "地形全开，只隐藏动态信息", "description": "开战时就能规划整张地图的路线，但仍需侦察敌人和机关当前状态。" },
+        { "id": "C", "label": "由战前情报决定", "description": "是否掌握地图取决于探索和准备，有情报的区域先显示地形，其余区域隐藏。" }
+      ]
+    },
+    {
+      "id": "party_deployment",
+      "title": "战斗如何安排出场成员？",
+      "description": "只从当时已加入、在场且能够行动的角色中安排，不改变主角团按剧情逐步集结的设定。",
+      "options": [
+        { "id": "A", "label": "在场成员全部出战", "description": "不另设主角团出战上限，五人集结后通常五人参战。", "recommended": true },
+        { "id": "B", "label": "最多四人，其他人替补", "description": "战前选择阵容，未出场成员的作用另行设计。" },
+        { "id": "C", "label": "按遭遇设置人数", "description": "潜入、护送、守点等不同遭遇有各自的出场限制。" }
+      ]
+    },
+    {
+      "id": "cover_system",
+      "title": "地形怎样影响攻击与防护？",
+      "options": [
+        { "id": "A", "label": "带方向的半掩体与全掩体", "description": "掩体效果取决于攻击方向，绕侧翼可以减少或绕过防护。" },
+        { "id": "B", "label": "按格子提供地形加成", "description": "站在树林、墙边等地形格获得明确加成，先不区分掩体朝向。", "recommended": true },
+        { "id": "C", "label": "先只做阻挡与视线", "description": "地形影响通行和能否攻击，不额外引入掩体防护数值。" }
+      ]
+    },
+    {
+      "id": "combat_forecast",
+      "title": "确认攻击前，希望看到多详细的预览？",
+      "options": [
+        { "id": "A", "label": "明确的数值与反击风险", "description": "显示命中率、预计伤害或伤害范围，以及当前已知的反击条件和风险。", "recommended": true },
+        { "id": "B", "label": "只显示命中率与主要效果", "description": "保持界面简洁，具体伤害和反击细节在说明面板中查看。" },
+        { "id": "C", "label": "以定性提示为主", "description": "使用高、中、低等提示，减少精确数值展示。" }
+      ]
+    },
+    {
+      "id": "crpg_priorities",
+      "title": "“偏 CRPG”最想优先体现在哪些方面？",
+      "description": "可多选，建议先选二至三项确定制作重心。已有剧情允许多种解法，这里选择的是优先深入的机制。",
+      "type": "multiple",
+      "options": [
+        { "id": "A", "label": "人物专长与对话检定", "description": "调查、交涉和辨识等能力影响可用选项。" },
+        { "id": "B", "label": "战场环境互动", "description": "机关、绳索、闸门和通路操作构成战术选择。" },
+        { "id": "C", "label": "战前准备影响战斗", "description": "情报、工具和协助改变入场位置、可用路线或现场资源。" },
+        { "id": "D", "label": "角色构筑与技能组合", "description": "角色成长、装备与技能配合形成不同战斗流派。" },
+        { "id": "E", "label": "任务分支与持续后果", "description": "不同解法影响后续关系、可用资源和任务状态。" }
+      ]
+    },
+    {
+      "id": "postbattle_recovery",
+      "title": "连续遭遇之间如何恢复角色状态？",
+      "description": "本题只讨论恢复节奏；战斗失败可重试的既有设定保留。",
+      "options": [
+        { "id": "A", "label": "战后基本恢复", "description": "主要挑战集中在单场战斗，伤势或特殊代价由明确事件处理。" },
+        { "id": "B", "label": "部分恢复，补给补足", "description": "战后恢复一部分状态，药物和休整用于进一步恢复。", "recommended": true },
+        { "id": "C", "label": "损耗持续到安全地点", "description": "连续遭遇共享状态损耗，需要规划药物、休息点和返回时机。" }
+      ]
+    }
+  ]
+}
